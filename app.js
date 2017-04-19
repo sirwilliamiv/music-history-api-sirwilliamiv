@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 let app = express();
 
 // <Include the router index file>
-let router = require('routes/index');
+let routes = require('./routes/index');
 // <Setup your routes middleware>
 app.use(bodyParser.json());
 app.use('/api/v1/', routes);
@@ -26,8 +26,8 @@ app.use( (err,req, res, next) => {
 });
 
 
-const port = process.env.PORT || 8085;
+const port = process.env.PORT || 3000;
 
-app.list(port, ()=> {
+app.listen(port, ()=> {
   console.log(`listening on port ${port}`)
 })

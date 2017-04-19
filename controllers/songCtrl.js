@@ -34,11 +34,13 @@ Song.forge(body)
     console.log('error in addSong in songctrl', error)
     next(error)
   })
-})
+)
 }
 //delete
-module.exports.deleteSingleSong = ( { params: { id } }, res, next) => {
-  Song.forge({id})
+module.exports.deleteSingleSong = ( { params: { SongId } }, res, next) => {
+
+  Song.forge({SongId: SongId})
+  .where('SongId','=', SongId)
   .destroy()
   .then( (song) => {
     res.status(200).json(song)
