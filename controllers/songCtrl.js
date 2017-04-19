@@ -25,16 +25,38 @@ module.exports.getAllSongs = (req,res,next) => {
     next(error)
   })
 }
+
+
+// module.exports.editSong = ({ body }, res, next) => {
+//   Song.forge(body)
+//   .where('SongId', '=', req.params.id)
+//   .save
+// }
+
+
+
+
+
+
+
+
 //adding
+//postman
+ // { "Title": "john", "SongLength":"24", "ReleaseDate": "thursday", "GenreId": "5", "ArtistId": "5","AlbumId": "5"  }
+
+// curl --request POST --data "{ \"Title\": \"bigSongs\", \"SongLength\":\"24\", \"ReleaseDate\": \"thursday\", \"GenreId\": 5, \"ArtistId\": 5,\"AlbumId\": 5  } "http://127.0.0.1:3000/api/v1/songs/add --header "Content-Type: application/json"
+
 module.exports.addSong = ({ body }, res, next) => {
+  console.log("body", body)
 Song.forge(body)
 .save()
-.then( ()=> res.status(201).json({msg:"A Song was nicely posted to the DB"})
-  .catch( (error) => {
+.then((x)=> {
+  console.log("x", x.toJSON())
+  return res.status(201).json({msg:"A Song was nicely posted to the DB"})
+}).catch( (error) => {
     console.log('error in addSong in songctrl', error)
     next(error)
   })
-)
 }
 //delete
 module.exports.deleteSingleSong = ( { params: { SongId } }, res, next) => {
