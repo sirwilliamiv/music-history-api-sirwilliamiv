@@ -15,7 +15,7 @@ module.exports.getSong = ({params: { id } },res,next) => {
   })
 }
 //get all songs
-module.exports.getSong = (req,res,next) => {
+module.exports.getAllSongs = (req,res,next) => {
   Song.getAllSongs()
   .then( (songs) => {
     res.status(200).json(songs);
