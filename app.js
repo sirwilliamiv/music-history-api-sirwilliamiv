@@ -24,3 +24,10 @@ app.use( (err,req, res, next) => {
     error: {}
   });
 });
+
+
+const port = process.env.PORT || 8085;
+
+app.list(port, ()=> {
+  console.log(`listening on port ${port}`)
+})

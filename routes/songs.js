@@ -12,3 +12,5 @@ router.get('/songs/:id', getSong);
 router.delete('/songs/:id', deleteSingleSong);
 
 // <stretch: define routes for posting, deleting, editing a song>
+
+module.exports = router;
